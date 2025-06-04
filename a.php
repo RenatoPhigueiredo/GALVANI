@@ -21,7 +21,7 @@
                                     '$Valor')";
                             
     $incluir=mysli_query($con,$in);
-    if()
+    if($)
     ?>
 </body>
 </html>
