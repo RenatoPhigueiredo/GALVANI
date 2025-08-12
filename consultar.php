@@ -11,7 +11,7 @@
     $expressao=$_POST['expressao'];
     $bd=mysqli_connect("localhost","root","","gravadora") or die ("ERROR!");
     $op=$_POST['op'];
-
+        
     if($op ==  "ano_lancamento"){
         $consulta=mysqli_query($bd, "SELECT * FROM musicas WHERE ano_lancamento= '$expressao'");
     }
@@ -50,16 +50,16 @@
    echo" caminho_arquivo: " . $reg ['caminho_arquivo']."<br>";
 }
 
-    echo "<br><a href='regrava.php'>Regrava</a><br>";
+    echo "<br><a href='alterar.php'>alterar</a><br>";
 
     echo "<a href='deletar.php'>Deletar</a><br>";
 
-    echo "<a href='consultar.html'>Voltar a consulta</a>";    
+    echo "<a href='consultar.html'>Voltar a consulta</a><br><hr>";    
 
     ?>
 
     <?php 
-    $reg=mysqli_fetch_array($consulta);
+        $reg=mysqli_fetch_array($consulta);
     ?>
 
 </body>
