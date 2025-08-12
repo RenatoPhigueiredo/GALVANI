@@ -48,15 +48,14 @@
    echo" compositor: ".  $reg ['compositor']."<br>";
    echo" letra: " . $reg ['letra']."<br>";
    echo" caminho_arquivo: " . $reg ['caminho_arquivo']."<br>";
-}
 
-    echo "<br><a href='alterar.php'>alterar</a><br>";
-
-    echo "<a href='deletar.php'>Deletar</a><br>";
-
+        echo "<a href='deletar.php'>Deletar</a><br><hr><br>";
+    }
+   
     echo "<a href='consultar.html'>Voltar a consulta</a><br><hr>";    
 
     ?>
+    
 
     <?php 
         $reg=mysqli_fetch_array($consulta);
