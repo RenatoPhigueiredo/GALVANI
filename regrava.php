@@ -18,21 +18,20 @@
     $letra =            $_POST['letra'];
     $caminho_arquivo =  $_POST['caminho_arquivo'];
 
-    $bd=mysqli_connect("localhost","root","","gravadora");
+    $bd=mysqli_connect("localhost","root","","repertorio");
     
-    $rd=mysqli_query($bd,"update musicas set titulo='$titulo', 
+    $rd=mysqli_query($bd,"UPDATE musicas SET titulo='$titulo', 
                                             artista='$artista', 
                                             album='$album', 
                                             genero='$genero', 
-                                            no_lancamento='$ano_lancamento', 
+                                            ano_lancamento='$ano_lancamento', 
                                             duracao_segundos='$duracao_segundos', 
                                             gravadora='$gravadora', 
                                             compositor='$compositor', 
                                             letra='$letra', 
-                                            caminho_arquivo='$caminho_arquivo' 
-                                            where id='$_POST[id]'");
+                                            caminho_arquivo='$caminho_arquivo'");
         
-      if($rd){
+      if($rd == 1){
         echo"Registro alterado com sucesso!<br>";
         echo "<br><a href='consultar.html'>Consultar</a>";
       }                          

@@ -9,7 +9,7 @@
 <body>
     <?php
     $expressao=$_POST['expressao'];
-    $bd=mysqli_connect("localhost","root","","gravadora") or die ("ERROR!");
+    $bd=mysqli_connect("localhost","root","","repertorio") or die ("ERROR!");
     $op=$_POST['op'];
         
     if($op ==  "ano_lancamento"){
@@ -37,22 +37,22 @@
     
 
     while($reg=mysqli_fetch_array($consulta)){
+        echo" id: " . $reg ['id'] . "<br>";
+        echo" titulo: " . $reg['titulo']."<br>";
+        echo" artista: " .$reg['artista']."<br>";
+        echo" album: ". $reg['album']."<br>";
+        echo" genero: ". $reg['genero']."<br>";
+        echo" ano_lancamento: " . $reg['ano_lancamento']."<br>";
+        echo" duracao_segundos: ". $reg['duracao_segundos']."<br>"; 
+        echo" gravadora: " . $reg ['gravadora']."<br>";
+        echo" compositor: ".  $reg ['compositor']."<br>";
+        echo" letra: " . $reg ['letra']."<br>";
+        echo" caminho_arquivo: " . $reg ['caminho_arquivo']."<br>";
+        echo "<a href='alterar.php?id=" . urlencode($reg['id']) . "'>Alterar</a> | ";
+        echo "<a href='deletar.php?id=" . urlencode($reg['id']) . "'>Deletar</a><br><hr><br>";
+        }
         
-   echo" titulo: " . $reg['titulo']."<br>";
-   echo" artista: " .$reg['artista']."<br>";
-   echo" album: ". $reg['album']."<br>";
-   echo" genero: ". $reg['genero']."<br>";
-   echo" ano_lancamento: " . $reg['ano_lancamento']."<br>";
-   echo" duracao_segundos: ". $reg['duracao_segundos']."<br>"; 
-   echo" gravadora: " . $reg ['gravadora']."<br>";
-   echo" compositor: ".  $reg ['compositor']."<br>";
-   echo" letra: " . $reg ['letra']."<br>";
-   echo" caminho_arquivo: " . $reg ['caminho_arquivo']."<br>";
-
-        echo "<a href='deletar.php'>Deletar</a><br><hr><br>";
-    }
-   
-    echo "<a href='consultar.html'>Voltar a consulta</a><br><hr>";    
+        echo "<a href='consultar.html'>Voltar a consulta</a><br><hr>";    
 
     ?>
     

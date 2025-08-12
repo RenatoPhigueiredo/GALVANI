@@ -10,8 +10,9 @@
     $compositor =       $_POST['compositor'] ;
     $letra =            $_POST['letra'];
     $caminho_arquivo =  $_POST['caminho_arquivo'];
+    $data_cadastro= $_POST['data_cadastro'];
 
-    $con = mysqli_connect('localhost', 'root', '', 'gravadora');
+    $con = mysqli_connect('localhost', 'root', '', 'repertorio');
 
     $titulo = mysqli_real_escape_string($con, $titulo);
     $artista = mysqli_real_escape_string($con, $artista);
@@ -23,11 +24,12 @@
     $compositor = mysqli_real_escape_string($con, $compositor);
     $letra = mysqli_real_escape_string($con, $letra);
     $caminho_arquivo = mysqli_real_escape_string($con, $caminho_arquivo);
+    $data_cadastro = mysqli_real_escape_string($con, $data_cadastro);
 
     $in = "INSERT INTO musicas 
-        (titulo, artista, album, genero, ano_lancamento, duracao_segundos, gravadora, compositor, letra, caminho_arquivo) 
+        (titulo, artista, album, genero, ano_lancamento, duracao_segundos, gravadora, compositor, letra, caminho_arquivo, data_cadastro) 
         VALUES 
-        ('$titulo', '$artista', '$album', '$genero', '$ano_lancamento', '$duracao_segundos', '$gravadora', '$compositor', '$letra', '$caminho_arquivo')";
+        ('$titulo', '$artista', '$album', '$genero', '$ano_lancamento', '$duracao_segundos', '$gravadora', '$compositor', '$letra', '$caminho_arquivo', '$data_cadastro')";
 
     $incluir=mysqli_query($con, $in);
 
@@ -42,7 +44,9 @@
            Gravadora: $gravadora   <br>  
            Compositor: $compositor  <br>  
            Letra:    $letra       <br>  
-           Caminho:$caminho_arquivo";
+           Caminho: $caminho_arquivo <br>
+           Data de Cadastro: $data_cadastro <hr>";
+
            echo "<br><a href='a.html'>Voltar</a>";
            echo "<br><a href='consultar.html'>Consultar</a>";
     } else {

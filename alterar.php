@@ -7,11 +7,11 @@
 </head>
 <body>
     <?php
-    $titulo=trim($_GET['titulo']);
+    $id=trim($_GET['id']);
 
-    $sp=mysqli_connect("localhost","root","","gravadora") or die ("ERROR!");
+    $sp=mysqli_connect("localhost","root","","repertorio") or die ("ERROR!");
 
-    $sql= "SELECT * FROM musicas WHERE genero='$titulo'";
+    $sql= "SELECT * FROM musicas WHERE id='$id'";
 
     $consulta=mysqli_query($sp,$sql);
 
@@ -49,7 +49,6 @@
         compositor      <input type="text" name="compositor"        value=<?php echo "$compositor";?>><br>
         letra           <input type="text" name="letra"             value=<?php echo "$letra";?>><br>
         caminho_arquivo <input type="text" name="caminho_arquivo"   value=<?php  echo"$caminho_arquivo";?>><br>
-        data_cadastro   <input type="text" name="data_cadastro"     value=<?php echo"$data_cadastro";?>><br>
         <input type="submit" value="regravar"><br>
     </form>
 
