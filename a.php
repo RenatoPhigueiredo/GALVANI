@@ -1,64 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <?php
-        $titulo                 =$_POST["titulo"];         
-        $artista                =$_POST["artista"];
-        $album                  =$_POST["album"];
-        $genero                 =$_POST["genero"];
-        $ano_lancamento         =$_POST["ano_lancamento"];
-        $duracao_segundo        =$_POST["duracao_segundo"];
-        $gravadora              =$_POST["gravadora"];
-        $compositor             =$_POST["compositor"];
-        $letra                  =$_POST["letra"];
-        $caminho_arquivo        =$_POST["caminho_arquivo"];
-        $data_cadastro          =$_POST["data_cadastro"];
+<?php
 
-        $con=mysqli_connect("localhost","root","","repertorio") or die("ERROR!");
+    $titulo =       $_POST['titulo'] ;
+    $artista =      $_POST['artista'] ;
+    $album =        $_POST['album'] ;
+    $genero =       $_POST['genero'] ;
+    $ano_lancamento = $_POST['ano_lancamento'] ;
+    $duracao_segundos = $_POST['duracao_segundos'] ;
+    $gravadora =        $_POST['gravadora'] ;
+    $compositor =       $_POST['compositor'] ;
+    $letra =            $_POST['letra'];
+    $caminho_arquivo =  $_POST['caminho_arquivo'];
 
-        $in="insert into musicas values( null,
-                                        '$titulo',
-                                        '$artista',
-                                        '$album',
-                                        '$genero',
-                                        '$ano_lancamento',
-                                        '$duracao_segundo',
-                                        '$gravadora     ',
-                                        '$compositor    ',
-                                        '$letra',
-                                        '$caminho_arquivo',
-                                        '$data_cadastro ')";
-                        
-        
-    $incluir=mysqli_query($con,$in);
-    if($incluir == 1)
-    {
-        echo"
-        titulo                  $titulo <br>       
-        artista                 $artista <br>    
-        album                   $album   <br>    
-        genero                  $genero  <br>    
-        ano_lancamento          $ano_lancamento<br> 
-        duracao_segundo         $duracao_segundo<br>
-        gravadora               $gravadora<br>      
-        compositor              $compositor   <br>  
-        letra                   $letra        <br>  
-        caminho_arquivo         $caminho_arquivo<br>
-        data_cadastro           $data_cadastro  
-        ";
+    $con = mysqli_connect('localhost', 'root', '', 'gravadora');
 
+    $titulo = mysqli_real_escape_string($con, $titulo);
+    $artista = mysqli_real_escape_string($con, $artista);
+    $album = mysqli_real_escape_string($con, $album);
+    $genero = mysqli_real_escape_string($con, $genero);
+    $ano_lancamento = mysqli_real_escape_string($con, $ano_lancamento);
+    $duracao_segundos = mysqli_real_escape_string($con, $duracao_segundos);
+    $gravadora = mysqli_real_escape_string($con, $gravadora);
+    $compositor = mysqli_real_escape_string($con, $compositor);
+    $letra = mysqli_real_escape_string($con, $letra);
+    $caminho_arquivo = mysqli_real_escape_string($con, $caminho_arquivo);
+
+    $in = "INSERT INTO musicas 
+        (titulo, artista, album, genero, ano_lancamento, duracao_segundos, gravadora, compositor, letra, caminho_arquivo) 
+        VALUES 
+        ('$titulo', '$artista', '$album', '$genero', '$ano_lancamento', '$duracao_segundos', '$gravadora', '$compositor', '$letra', '$caminho_arquivo')";
+
+    $incluir=mysqli_query($con, $in);
+
+    if ($incluir) {
+        echo "<center><h1>Registro inserido com sucesso!</h1></center>";
+        echo"Titulo: $titulo <br>       
+           Artista: $artista  <br>     
+           Album: $album       <br>  
+           Genero: $genero        <br>
+           Ano do Lançamento: $ano_lancamento <br>
+           Duracao: $duracao_segundos<br>
+           Gravadora: $gravadora   <br>  
+           Compositor: $compositor  <br>  
+           Letra:    $letra       <br>  
+           Caminho:$caminho_arquivo";
+           echo "<br><a href='a.html'>Voltar</a>";
+           echo "<br><a href='consultar.html'>Consultar</a>";
+    } else {
+        echo "Erro ao inserir registro: ";
     }
-    else{
-        echo"ALGO ESTA ERRADO";
-    }
-     echo '<br><a href=a.html>Voltar</a>';
-     echo'<br><a href=regrava.php>Regravar</a>';
-    ?>
-</body>
-</html>
+?>

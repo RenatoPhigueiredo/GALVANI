@@ -8,25 +8,59 @@
 </head>
 <body>
     <?php
-    $ano_lancamento=$_POST["ano_lancamento"];
+    $expressao=$_POST['expressao'];
+    $bd=mysqli_connect("localhost","root","","gravadora") or die ("ERROR!");
+    $op=$_POST['op'];
+
+    if($op ==  "ano_lancamento"){
+        $consulta=mysqli_query($bd, "SELECT * FROM musicas WHERE ano_lancamento= '$expressao'");
+    }
+
+    else if ($op == "genero"){
+        $consulta=mysqli_query($bd, "SELECT * FROM musicas WHERE genero= '$expressao'");
+    }
+
+    else if($op == "compositor"){
+        $consulta=mysqli_query($bd, "SELECT * FROM musicas WHERE compositor ='$expressao'");
+    }
+
+    else if($op == "titulo"){
+        $consulta=mysqli_query($bd, "SELECT * FROM   musicas WHERE titulo LIKE '%$expressao%'");
+    }
+
+    else{
+        echo "volte e selecione novamente,registro nao encontrado";
+        echo "<a href='consultar.html'>Voltar a consulta</a>";  
+        exit;
+    }
+
     
-    $bd=mysqli_connect("localhost","root","","repertorio") or die ("ERROR!");
 
-    if(isset($_POST["$genero"]))
-    {
+    while($reg=mysqli_fetch_array($consulta)){
+        
+   echo" titulo: " . $reg['titulo']."<br>";
+   echo" artista: " .$reg['artista']."<br>";
+   echo" album: ". $reg['album']."<br>";
+   echo" genero: ". $reg['genero']."<br>";
+   echo" ano_lancamento: " . $reg['ano_lancamento']."<br>";
+   echo" duracao_segundos: ". $reg['duracao_segundos']."<br>"; 
+   echo" gravadora: " . $reg ['gravadora']."<br>";
+   echo" compositor: ".  $reg ['compositor']."<br>";
+   echo" letra: " . $reg ['letra']."<br>";
+   echo" caminho_arquivo: " . $reg ['caminho_arquivo']."<br>";
+}
 
-        $genero=$_POST["$genero"];
+    echo "<br><a href='regrava.php'>Regrava</a><br>";
 
-        if($genero=="genero"){
-        $consultar=mysqli_query($bd,"select * from musica where musicas= '$ano_lancamento'");
-        }
-    }
+    echo "<a href='deletar.php'>Deletar</a><br>";
 
+    echo "<a href='consultar.html'>Voltar a consulta</a>";    
 
-    else
-    {
-        echo "volte ao campo que fara a pesquisa de consulta";
-    }
     ?>
+
+    <?php 
+    $reg=mysqli_fetch_array($consulta);
+    ?>
+
 </body>
 </html>

@@ -8,20 +8,21 @@
 </head>
 <body>
     <form action="a.php" method="post">
+
                     <input type="hidden" name="id">
-        titulo      <input type="text" name="titulo"><br>
-        artista     <input type="text" name="artista"><br>
-        album       <input type="text" name="album"><br>
-        genero      <input type="text" name="genero"><br>
-        ano_lancamento  <input type="text" name="ano_lancamento"><br>
-        duracao_segundo <input type="text" name="duracao_segundo"><br>
-        gravadora       <input type="text" name="gravadora"><br>
-        compositor      <input type="text" name="compositor"><br>
-        letra           <input type="text" name="letra"><br>
-        caminho_arquivo <input type="text" name="caminho_arquivo"><br>
-        data_cadastro   <input type="text" name="data_cadastro"><br>
-        <input type="submit">
-        <a href="consultar.html">CONSULTAR</a>
+        titulo      <input type="text" name="titulo" required><br>
+        artista     <input type="text" name="artista"   required><br>
+        album       <input type="text" name="album" required><br>
+        genero      <input type="text" name="genero" required><br>
+        ano_lancamento  <input type="text" name="ano_lancamento" placeholder="insira em numeros" required><br>
+        duracao_segundo <input type="text" name="duracao_segundos" placeholder="insira em numeros" required><br>
+        gravadora       <input type="text" name="gravadora" required><br>
+        compositor      <input type="text" name="compositor" required><br>
+        letra           <input type="text" name="letra" required><br>
+        caminho_arquivo <input type="text" name="caminho_arquivo" required><br>
+        data_cadastro   <input type="text" name="data_cadastro" ><br>
+        <input type="submit" value="Cadastrar"><br>
+
     </form>
 </body>
 </html>
